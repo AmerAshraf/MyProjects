@@ -1,0 +1,42 @@
+#hide{
+    background: #fff;
+    width: 100%;
+    height: 100%;
+}
+
+
+#hide:hover{
+    background: #e4c668;
+    width: 100%;
+    height: 100%;
+}
+
+.img-connect{
+    height: 45px;
+    width: 45px;
+    display: block;
+}
+
+
+.show_button{
+    background: #fff;
+}
+
+
+.show_button:hover{
+    background-color: #e4c668;
+}
+
+
+.img-connect:hover{
+    height: 55px;
+    width: 55px;
+    display: block;
+}
+
+.connect{
+    position: fixed;
+    top: 30%;
+    left: 0%;
+    display: block;
+}

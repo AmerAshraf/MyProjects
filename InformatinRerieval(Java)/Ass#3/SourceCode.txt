@@ -1,0 +1,138 @@
+package test;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class IR_3 {
+    
+    public IR_3(){}
+    
+    public IR_3(String FileName,String FileName1,String FileName2,String FileName3) throws FileNotFoundException{
+    
+        ArrayList<String> Words = new ArrayList<String>();
+        
+        Scanner file = new Scanner(new File(FileName));
+        Scanner file1 = new Scanner(new File(FileName1));
+        Scanner file2 = new Scanner(new File(FileName2));        
+        Scanner file3 = new Scanner(new File(FileName3));
+        
+        ArrayList<String> StopWord = new ArrayList<String>();        
+        Scanner StopWordFile = new Scanner(new File("D:\\Study\\Lvl3\\term2\\IR«„«‰Ì ⁄»œÂ\\Lec1\\ASS#2\\StopWords.txt"));
+        while(StopWordFile.hasNext()){
+            StopWord.add(StopWordFile.next());
+        }        
+        
+        while( file.hasNext()){
+            Words.add(file.next());            
+        }
+        while( file1.hasNext()){
+            Words.add(file1.next());            
+        }
+        while( file2.hasNext()){
+            Words.add(file2.next());            
+        }
+        while( file3.hasNext()){
+            Words.add(file3.next());            
+        }
+        
+        for(int i=0; i<Words.size(); i++){
+            for(int ii=0 ;ii<StopWord.size();ii++){
+                if(Words.get(i).equals(StopWord.get(ii))){
+                    Words.remove(i);
+                    break;
+                }                
+            }}
+        
+        
+        System.out.println("Word           Document_1      Document_2      Document_3      Document_4            DF       "+"\n");
+        
+        
+       
+        
+        Map<String , Integer> WordCount = new HashMap<String, Integer>();
+        
+        int swo1 =0;
+        int swo2 =0;
+        int swo3 =0;
+        int swo4 =0;
+        int df=0;
+        
+        for(int i=0;i<Words.size();i++){
+            String word = Words.get(i);
+            Integer count = WordCount.get(word);
+            if(count != null){
+                count++;
+            }
+            else{
+                swo1=SpecificWordOccurence(FileName,word);
+                swo2=SpecificWordOccurence(FileName1,word);
+                swo3=SpecificWordOccurence(FileName2,word);
+                swo4=SpecificWordOccurence(FileName3,word);
+                        
+                if(swo1>0){
+                    df++;
+                }
+                if(swo2>0){
+                    df++;
+                }
+                if(swo3>0){
+                    df++;
+                }
+                if(swo4>0){
+                    df++;
+                }
+                
+                
+                
+                count = 1;
+                System.out.println(word + "              "  + swo1 + "               "
+                                                    + swo2 +"                 "
+                                                    + swo3 +"                "
+                                                    + swo4 +"                "
+                                                    + df +"\n");
+            }
+            WordCount.put(word, count);
+            df=0;
+        }
+        System.out.println("The TF is: "+WordCount);
+        
+    }
+    
+    
+    public int SpecificWordOccurence(String FileName,String str) throws FileNotFoundException{
+        
+        String word = "";
+        String[] w = str.split(" ");
+        Map<String , Integer> words = new HashMap<String, Integer>();
+        Scanner file = new Scanner(new File(FileName));
+        while(file.hasNext()){
+            word = file.next();
+            Integer count = words.get(word);
+            if(count != null)
+                count++;
+            else
+                count = 1;
+            words.put(word, count);
+        }
+        file.close();
+        
+        for(int i=0; i<w.length; i++){
+            Integer count = words.get(w[i]);
+            if(count != null){
+                
+                return count;
+            }
+            else{
+               return 0;
+            }
+        }
+        return -1;
+        }
+}
+
+
+

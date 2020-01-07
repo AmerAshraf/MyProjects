@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="TestCases.E_LogOut">
+        <methods>
+          <include name="OpenEbay"/>
+          <include name="closeDriver"/>
+          <include name="LogOuto"/>
+          <include name="SearchAndSelectProduct2"/>
+          <include name="Checkout"/>
+          <include name="AssertPageTitle"/>
+          <include name="Login"/>
+        </methods>
+      </class> <!-- TestCases.E_LogOut -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

@@ -1,0 +1,2 @@
+*In many projects you should to creat mysql db and Import the file
+ with extension ".sql" attached with project.
